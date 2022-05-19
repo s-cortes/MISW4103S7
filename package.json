@@ -1,0 +1,29 @@
+{
+  "name": "cypress-test-suite",
+  "version": "1.0.0",
+  "description": "Pruebas E2E utilizando Cypress Automation API",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s-cortes/MISW4103S5.git"
+  },
+  "keywords": [
+    "cypress",
+    "misw4103",
+    "autometion",
+    "e2e"
+  ],
+  "author": "Santiago Cortes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/s-cortes/MISW4103S5/issues"
+  },
+  "homepage": "https://github.com/s-cortes/MISW4103S5#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^6.3.1",
+    "cypress": "^9.6.0"
+  }
+}
