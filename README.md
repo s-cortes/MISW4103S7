@@ -117,4 +117,4 @@ npm run cypress:open
 ./node_modules/.bin/cypress open
 ```
 
-Una vez la aplicación de Cypress haya sido desplegada, es posible ejecutar las pruebas al seleccionar alguno de los archivos de la carpeta 📂  `end-to-end`.
+Una vez la aplicación de Cypress haya sido desplegada, es posible ejecutar las pruebas al seleccionar alguno de los archivos de la carpeta 📂  `escenarios`.
