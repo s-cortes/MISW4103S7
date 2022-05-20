@@ -142,6 +142,11 @@ class Editor {
         cy.get('#tag-input').clear().type(tagName).type('{enter}');
         cy.wait(300);
     }
+    readTags(callback) {
+        cy.get('li.tag-token').each(($p, index, $list) => {
+            cy.wrap($p).invoke('text').then(txt => callback(txt));
+        });
+    }
     writeExcerpt(excerpt) {
         cy.get('textarea.post-setting-custom-excerpt')
             .clear().type(excerpt, {force: true});

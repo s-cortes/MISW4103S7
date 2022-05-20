@@ -1,4 +1,4 @@
-import { adminUrls } from "../../../fixtures/urls";
+import { userUrls } from "../../../fixtures/urls";
 
 export class Article {
     navigateToArticle(slug) {
@@ -6,7 +6,7 @@ export class Article {
         cy.wait(300);
     }
     readTitle(callback) {
-        cy.get('header.article-header > h1.article-title')
+        cy.get('h1.article-title')
             .invoke('text').then(val => callback(val));
     }
     readContent(callback) {
