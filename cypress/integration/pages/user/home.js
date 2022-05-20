@@ -1,4 +1,4 @@
-import { adminUrls } from "../../../fixtures/urls";
+import { userUrls } from "../../../fixtures/urls";
 
 export class UserHomePage {
     navigate() {
