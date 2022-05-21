@@ -94,8 +94,48 @@ describe('Funcionalidad F002: Creación de Pages', () => {
         });
         it('F002E07.PA: ', () => {
 
+            articlesPositivePool.forEach(articlePoolObj => {
+                // GIVEN (additional to the login and dashboard navigation)
+                // that the admin navitages to the dashboard, and selects the option
+                // to create a page
+                page.navigateToEditor();
+                page.writeTitle(articlePoolObj.title);
+                page.writeArticle(articlePoolObj.content);
+
+                // WHEN the admin writes a title and the content for the page
+                page.publishNow();
+
+                // THEN he should be able to open the page published, and
+                // the value in the title input  should match the text that
+                // the admin previously wrote
+                page.clickEditorSettingsToggle();
+                page.goToPagePublishFromSlug();
+                article.readTitle((txt) => expect(txt).to.equal(articlePoolObj.title));
+            })
+
         });
         it('F002E09.PA: ', () => {
+
+            articlesPositivePool.forEach(articlePoolObj => {
+                // GIVEN (additional to the login and dashboard navigation)
+                // that the admin navitages to the dashboard, and selects the option
+                // to create a page
+                page.navigateToEditor();
+                page.writeTitle(articlePoolObj.title);
+                page.writeArticle(articlePoolObj.content);
+
+                // WHEN the admin writes a title and the content for the page
+                page.publishNow();
+
+                // THEN he should be able to open the page published, and
+                // the value in the title input  should match the text that
+                // the admin previously wrote
+                page.clickEditorSettingsToggle();
+                page.goToPagePublishFromSlug();
+                article.readContent(prgph => {
+                    expect(articlePoolObj.content).to.contain(prgph);
+                });
+            })
 
         });
     });
@@ -158,9 +198,47 @@ describe('Funcionalidad F002: Creación de Pages', () => {
         });
         it('F002E08.PA: ', () => {
 
+            articlesNegativePool.forEach((articlePoolObj, index) => {
+                // GIVEN (additional to the login and dashboard navigation)
+                // that the admin navitages to the dashboard, and selects the option
+                // to create a page
+                page.navigateToEditor();
+                page.writeTitle(articlePoolObj.title);
+                page.writeArticle(articlePoolObj.content);
+
+                // WHEN the admin writes a title and the content for the page
+                page.publishNow();
+
+                // THEN he should be able to open the page published, and
+                // the value in the title input  should match the text that
+                // the admin previously wrote
+                page.clickEditorSettingsToggle();
+                page.goToPagePublishFromSlug();
+                article.readTitle((txt) => expect(txt).to.equal(articlePoolObj.title));
+            })
+
         });
         it('F002E10.PA: ', () => {
+            articlesNegativePool.forEach((articlePoolObj, index) => {
+                // GIVEN (additional to the login and dashboard navigation)
+                // that the admin navitages to the dashboard, and selects the option
+                // to create a page
+                page.navigateToEditor();
+                page.writeTitle(articlePoolObj.title);
+                page.writeArticle(articlePoolObj.content);
 
+                // WHEN the admin writes a title and the content for the page
+                page.publishNow();
+
+                // THEN he should be able to open the page published, and
+                // the value in the title input  should match the text that
+                // the admin previously wrote
+                page.clickEditorSettingsToggle();
+                page.goToPagePublishFromSlug();
+                article.readContent(prgph => {
+                    expect(articlePoolObj.content).to.contain(prgph);
+                });
+            })
         });
     });
 
