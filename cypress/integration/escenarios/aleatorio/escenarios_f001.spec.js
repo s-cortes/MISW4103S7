@@ -89,7 +89,23 @@ describe('Funcionalidad F001: Creación de Post', () => {
             post.clickEditorSettingsToggle();
             post.readTags((txt) => expect(txt.trim()).to.equal(tag));
         });
-        it('F001E05.EA: ', () => {
+        it('F001E05.EA: ', () => {PAOLA
+            post.navigateToEditor();
+            let title = faker.lorem.words();
+            let paragraph = faker.lorem.paragraphs();
+            post.writeTitle(title);
+            post.writeArticle(paragraph);
+
+            // WHEN the admin opens the editor settings menu, and selects the
+            // tag input and writes a new tag, and publishes the post
+            let Excerpt = faker.lorem.paragraph(299);
+             post.writeExcerpt();
+             post.publishNow();
+
+            // THEN he should be able to open the settings tab, and
+            // the value in the tag input  should match the text that
+            // the admin previously wrote
+            
 
         });
         it('F001E07.EA: ', () => {
