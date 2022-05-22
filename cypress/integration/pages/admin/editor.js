@@ -170,6 +170,10 @@ class Editor {
         cy.wait(300);
         return excerpt;
     }
+    readExcerpt(callback) {
+        cy.get('textarea.post-setting-custom-excerpt').invoke('val')
+            .then(txt => callback(txt));
+    }
     deleteArticle() {
         cy.get('button.settings-menu-delete-button').then(btn => {
             cy.wrap(btn).click();

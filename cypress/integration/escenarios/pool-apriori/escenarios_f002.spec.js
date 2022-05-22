@@ -91,7 +91,28 @@ describe('Funcionalidad F002: Creación de Pages', () => {
             });
         });
         it('F002E05.PA: ', () => {
-
+            // GIVEN (additional to the login and dashboard navigation)
+            // that the admin navitages to the dashboard, and selects the option
+            // to create a page, and writes a title and the content for the page
+            articlesPositivePool.forEach(articlePoolObj => {
+                page.navigateToEditor();
+                page.writeTitle(articlePoolObj.title);
+                page.writeArticle(articlePoolObj.content);
+    
+                // WHEN the admin opens the editor settings menu, and selects the
+                // excerpt textarea and writes a new excerpt, and publishes the page
+                let excerpt = articlePoolObj.excerpt.trim();
+                page.clickEditorSettingsToggle();
+                page.writeExcerpt(excerpt);
+                page.clickEditorSettingsToggle();
+                page.publishNow();
+    
+                // THEN he should be able to open the settings tab, and
+                // the value in the excerpt textarea should match the text that
+                // the admin previously wrote
+                page.clickEditorSettingsToggle();
+                page.readExcerpt((txt) => expect(txt.trim()).to.equal(excerpt));
+            });
         });
         it('F002E07.PA: ', () => {
 
@@ -147,7 +168,8 @@ describe('Funcionalidad F002: Creación de Pages', () => {
                 page.clickEditorSettingsToggle();
     
                 // THEN he should be able to write a title and the content
-                // for the page and publish it
+                // for the page, publish it, and the value in the tag input
+                // should match the text that the admin previously wrote
                 page.writeTitle(posArticleObj.title);
                 page.writeArticle(posArticleObj.content);
                 page.publishNow();
@@ -157,7 +179,31 @@ describe('Funcionalidad F002: Creación de Pages', () => {
             });
         });
         it('F002E06.PA: ', () => {
+            // GIVEN (additional to the login and dashboard navigation)
+            // that the admin navitages to the dashboard, and selects the option
+            // to create a page
+            articlesNegativePool.forEach((articlePoolObj, index) => {
+                let posArticleObj = articlesPositivePool[index];
+                page.navigateToEditor();
+    
+                // WHEN the admin opens the editor settings menu, and selects the
+                // excerpt textarea and writes a new excerpt using special characters,
+                // and 'naughty' characters, and publishes the page
+                let excerpt = articlePoolObj.excerpt.trim();
+                page.clickEditorSettingsToggle();
+                page.writeExcerpt(excerpt);
+                page.clickEditorSettingsToggle();
+    
+                // THEN he should be able to write a title and the content
+                // for the page, publish it, and the value in the excerpt textarea
+                // should match the text that the admin previously wrote
+                page.writeTitle(posArticleObj.title);
+                page.writeArticle(posArticleObj.content);
+                page.publishNow();
 
+                page.clickEditorSettingsToggle();
+                page.readExcerpt((txt) => expect(txt.trim()).to.equal(excerpt));
+            });
         });
         it('F002E08.PA: ', () => {
 
