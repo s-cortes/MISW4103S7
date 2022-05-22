@@ -110,7 +110,14 @@ class Editor {
     unPublish() { 
         this.#clickPublishButton();
         this.#clickOnFirstPublishOption();
+        this.#clickPublishOptionConfirmation();
+        this.#clickPublishButton();
     }
+
+    checkIfPublishErrorExists() {
+        expect(cy.get('.gh-alerts').find('.gh-alert')).to.exist;
+    }
+
     // Article (Page/Post) Preview ----------------------------------------------------------------
     getPreview(){
         cy.get('button[class="gh-btn gh-editor-preview-trigger"]').click();
@@ -134,6 +141,10 @@ class Editor {
         cy.wait(300);
         return slug;
     }
+    readUrlSlug(callback) {
+        cy.get('input.post-setting-slug').invoke('val')
+            .then(txt => callback(txt));
+    }
     clickEditorSettingsView(){
         cy.get('a.post-view-link').click();
         cy.wait(300);
@@ -146,6 +157,12 @@ class Editor {
         cy.get('#tag-input').clear().type(tagName).type('{enter}');
         cy.wait(300);
     }
+    writeTagPageWithoutClearingInput(tagName) {
+        cy.get('#tag-input').type(tagName);
+        cy.wait(500);
+        cy.get('#tag-input').type('{enter}');
+        cy.wait(500);
+    }
     readTags(callback) {
         cy.get('li.tag-token').each(($p, index, $list) => {
             cy.wrap($p).invoke('text').then(txt => callback(txt));
@@ -156,6 +173,10 @@ class Editor {
             .clear().type(excerpt, {force: true});
         cy.wait(300);
         return excerpt;
+    }
+    readExcerpt(callback) {
+        cy.get('textarea.post-setting-custom-excerpt').invoke('val')
+            .then(txt => callback(txt));
     }
     deleteArticle() {
         cy.get('button.settings-menu-delete-button').then(btn => {
