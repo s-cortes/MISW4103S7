@@ -51,7 +51,7 @@ describe('Funcionalidad F002: Creación de Pages', () => {
                 page.writeArticle(articlePoolObj.content);
 
                 // WHEN the admin opens the editor settings menu, and selects the
-                // URL input to erase it an and writes a new url slug, and
+                // URL input to erase it and writes a new url slug, and
                 // publishes the page
                 page.clickEditorSettingsToggle();
                 page.writeUrlSlug(url);
@@ -77,8 +77,9 @@ describe('Funcionalidad F002: Creación de Pages', () => {
     
                 // WHEN the admin opens the editor settings menu, and selects the
                 // tag input and writes a new tag, and publishes the page
+                let tag = articlePoolObj.tag.trim();
                 page.clickEditorSettingsToggle();
-                page.setTagPage(articlePoolObj.tag);
+                page.setTagPage(tag);
                 page.clickEditorSettingsToggle();
                 page.publishNow();
     
@@ -86,7 +87,7 @@ describe('Funcionalidad F002: Creación de Pages', () => {
                 // the value in the tag input  should match the text that
                 // the admin previously wrote
                 page.clickEditorSettingsToggle();
-                page.readTags((txt) => expect(txt.trim()).to.equal(articlePoolObj.tag))
+                page.readTags((txt) => expect(txt.trim()).to.equal(tag));
             });
         });
         it('F002E05.PA: ', () => {
@@ -114,7 +115,8 @@ describe('Funcionalidad F002: Creación de Pages', () => {
                 page.writeArticle(posArticleObj.content);
 
                 // WHEN the admin opens the editor settings menu, and selects the
-                // URL input to erase it an and writes a new url slug, and
+                // URL input to erase it and writes a new url slug, consisting of
+                // whitespaces, dashes, a combination of both, or an ampty string, and
                 // publishes the page
                 page.clickEditorSettingsToggle();
                 page.writeUrlSlug(url);
@@ -138,9 +140,10 @@ describe('Funcionalidad F002: Creación de Pages', () => {
                 page.navigateToEditor();
     
                 // WHEN the admin opens the editor settings menu, and selects the
-                // tag input and writes a new tag, and publishes the page
+                // tag input and writes a new tag using whitespaces, special characters, and
+                // 'naughty' characters, and publishes the page
                 page.clickEditorSettingsToggle();
-                page.setTagPage(articlePoolObj.tag);
+                page.setTagPage(articlePoolObj.tag.trim());
                 page.clickEditorSettingsToggle();
     
                 // THEN he should be able to write a title and the content
@@ -150,7 +153,7 @@ describe('Funcionalidad F002: Creación de Pages', () => {
                 page.publishNow();
 
                 page.clickEditorSettingsToggle();
-                page.readTags((txt) => expect(txt.trim()).to.equal(tag));
+                page.readTags((txt) => expect(txt.trim()).to.equal(articlePoolObj.tag.trim()));
             });
         });
         it('F002E06.PA: ', () => {
