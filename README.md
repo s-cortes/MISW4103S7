@@ -78,11 +78,12 @@ Para poder hacer uso de los escenarios de prueba establecidos, es necesario ejec
 npm install
 ```
 
-Este proyecto hace uso, principalmente, de 2 dependencias: `cypress` y  `@faker-js/faker` (generación de datos para pruebas). Los siguientes comandos muestran cómo hacer la instalación de estas dependencias
+Este proyecto hace uso, principalmente, de 2 dependencias: `cypress`, `@faker-js/faker`, y `mockaroo` (generación de datos para pruebas). Los siguientes comandos muestran cómo hacer la instalación de estas dependencias
 
 ```shell
 npm install cypress --save-dev
 npm install @faker-js/faker --save-dev
+npm install mockaroo
 ```
 
 ### Credenciales Ghost Admin
