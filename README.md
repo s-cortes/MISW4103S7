@@ -37,6 +37,8 @@
  ┃   ┃   ┃   ┣---📜 escenarios_f003.spec.js
  ┃   ┃   ┃   ┣---📜 escenarios_f004.spec.js
  ┃   ┃   ┃   ┗---📜 escenarios_f005.spec.js
+ ┃   ┣---📂 generator
+ ┃   ┃   ┃   ┗---📜 mockaroo_manager.js
  ┃   ┗---📂 pages
  ┃   ┃   ┣---📂 admin
  ┃   ┃   ┃   ┣---📜 dashboard.js
