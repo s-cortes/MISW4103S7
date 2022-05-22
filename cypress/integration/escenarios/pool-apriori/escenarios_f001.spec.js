@@ -51,7 +51,7 @@ describe('Funcionalidad F001: Creación de Post', () => {
                 post.writeArticle(articlePoolObj.content);
 
                 // WHEN the admin opens the editor settings menu, and selects the
-                // URL input to erase it an and writes a new url slug, and
+                // URL input to erase it and writes a new url slug, and
                 // publishes the post
                 post.clickEditorSettingsToggle();
                 post.writeUrlSlug(url);
@@ -77,8 +77,9 @@ describe('Funcionalidad F001: Creación de Post', () => {
     
                 // WHEN the admin opens the editor settings menu, and selects the
                 // tag input and writes a new tag, and publishes the post
+                let tag = articlePoolObj.tag.trim();
                 post.clickEditorSettingsToggle();
-                post.setTagPage(articlePoolObj.tag);
+                post.setTagPage(tag);
                 post.clickEditorSettingsToggle();
                 post.publishNow();
     
@@ -86,7 +87,7 @@ describe('Funcionalidad F001: Creación de Post', () => {
                 // the value in the tag input  should match the text that
                 // the admin previously wrote
                 post.clickEditorSettingsToggle();
-                post.readTags((txt) => expect(txt.trim()).to.equal(articlePoolObj.tag))
+                post.readTags((txt) => expect(txt.trim()).to.equal(tag));
             });
         });
         it('F001E05.PA: ', () => {
@@ -114,7 +115,8 @@ describe('Funcionalidad F001: Creación de Post', () => {
                 post.writeArticle(posArticleObj.content);
 
                 // WHEN the admin opens the editor settings menu, and selects the
-                // URL input to erase it an and writes a new url slug, and
+                // URL input to erase it and writes a new url slug, consisting of
+                // whitespaces, dashes, a combination of both, or an ampty string, and
                 // publishes the post
                 post.clickEditorSettingsToggle();
                 post.writeUrlSlug(url);
@@ -138,9 +140,10 @@ describe('Funcionalidad F001: Creación de Post', () => {
                 post.navigateToEditor();
     
                 // WHEN the admin opens the editor settings menu, and selects the
-                // tag input and writes a new tag, and publishes the post
+                // tag input and writes a new tag using whitespaces, special characters, and
+                // 'naughty' characters, and publishes the post
                 post.clickEditorSettingsToggle();
-                post.setTagPage(articlePoolObj.tag);
+                post.setTagPage(articlePoolObj.tag.trim());
                 post.clickEditorSettingsToggle();
     
                 // THEN he should be able to write a title and the content
@@ -150,7 +153,7 @@ describe('Funcionalidad F001: Creación de Post', () => {
                 post.publishNow();
 
                 post.clickEditorSettingsToggle();
-                post.readTags((txt) => expect(txt.trim()).to.equal(tag));
+                post.readTags((txt) => expect(txt.trim()).to.equal(articlePoolObj.tag.trim()));
             });
         });
         it('F001E06.PA: ', () => {
