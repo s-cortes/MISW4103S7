@@ -37,7 +37,7 @@ describe('Funcionalidad F001: Creación de Post', () => {
     });
 
     describe('Escenarios Positivos', () => {
-        it('F001E01.EA: ', () => {
+           it('F001E01.EA: ', () => {
             // GIVEN (additional to the login and dashboard navigation)
             // that the admin navitages to the dashboard, and selects the option
             // to create a post, and writes a title and the content for the post
@@ -89,7 +89,10 @@ describe('Funcionalidad F001: Creación de Post', () => {
             post.clickEditorSettingsToggle();
             post.readTags((txt) => expect(txt.trim()).to.equal(tag));
         });
-        it('F001E05.EA: ', () => {PAOLA
+        it('F001E05.EA: ', () => {
+            // GIVEN (additional to the login and dashboard navigation)
+            // that the admin navitages to the dashboard, and selects the option
+            // to create a post, and writes a title and the content for the post
             post.navigateToEditor();
             let title = faker.lorem.words();
             let paragraph = faker.lorem.paragraphs();
@@ -97,15 +100,19 @@ describe('Funcionalidad F001: Creación de Post', () => {
             post.writeArticle(paragraph);
 
             // WHEN the admin opens the editor settings menu, and selects the
-            // tag input and writes a new tag, and publishes the post
-            let Excerpt = faker.lorem.paragraph(299);
-             post.writeExcerpt();
-             post.publishNow();
-
-            // THEN he should be able to open the settings tab, and
-            // the value in the tag input  should match the text that
-            // the admin previously wrote
+            // excerpt and write the text
+            let excerpt = faker.lorem.slug(200);
+            post.clickEditorSettingsToggle();
+            post.writeExcerpt(excerpt);
+            post.clickEditorSettingsToggle();
+            post.publishNow();
             
+            // THEN after navegating to the post with the new excerpt,
+            // the title and the content that appears in the article
+            // should see the excerpt that the admin previously wrote
+            post.clickEditorSettingsToggle();
+            post.clickEditorSettingsView();
+            post.readArticle((txt) => expect(txt).to.equal(paragraph));
 
         });
         it('F001E07.EA: ', () => {
@@ -171,7 +178,29 @@ describe('Funcionalidad F001: Creación de Post', () => {
             post.readTags((txt) => expect(txt.trim()).to.equal(tag));
         });
         it('F001E06.EA: ', () => {
+            // GIVEN (additional to the login and dashboard navigation)
+            // that the admin navitages to the dashboard, and selects the option
+            // to create a post, and writes a title and the content for the post
+            post.navigateToEditor();
+            let title = faker.lorem.words();
+            let paragraph = faker.lorem.paragraphs();
+            post.writeTitle(title);
+            post.writeArticle(paragraph);
 
+            // WHEN the admin opens the editor settings menu, and selects the
+            // excerpt and write the text
+            let excerpt = faker.lorem.slug(301);
+            post.clickEditorSettingsToggle();
+            post.writeExcerpt(excerpt);
+            post.clickEditorSettingsToggle();
+            post.publishNow();
+            
+            // THEN after navegating to the post with the new excerpt,
+            // the title and the content that appears in the article
+            // should see the excerpt that the admin previously wrote
+            post.clickEditorSettingsToggle();
+            post.clickEditorSettingsView();
+            post.readArticle((txt) => expect(txt).to.equal(paragraph));
         });
         it('F001E08.EA: ', () => {
 
