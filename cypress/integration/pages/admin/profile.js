@@ -16,19 +16,18 @@ export class Profile {
   }
 
   writeName(name) {
-    
-    cy.get('#user-name').clear().type(name);
-    cy.wait(500)
-    
+    cy.wait(500);
+    cy.get("#user-name").clear().type(name, { force: true });
+    cy.wait(500);
+
     return name;
   }
 
-  writeSlug(name) {
-    
-    cy.get('#user-slug').clear().type(name);
-    cy.wait(500)
-    
-    return name;
+  writeSlug(slug) {
+    cy.get("#user-slug").clear().type(slug, { force: true });
+    cy.wait(500);
+
+    return slug;
   }
 
   readName(callback) {

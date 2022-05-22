@@ -97,7 +97,7 @@ describe("Funcionalidad F005: Edición Admin Profile", () => {
       profile.readName((txt) => expect(txt).to.equal(adminName));
     });
     it("F005E04.EA: ", () => {
-        // GIVEN (additional to the login and dashboard navigation)
+      // GIVEN (additional to the login and dashboard navigation)
       // that the admin navitages to the dashboard, and goes to
       // your profile
       dashboard.navigate();

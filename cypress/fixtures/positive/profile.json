@@ -1,0 +1,9 @@
+{
+  "pool": [
+    { "name": "Sibilla Doberer", "slug": "Sibilla" },
+    { "name": "Fulvia Boast", "slug": "Fulvia" },
+    { "name": "Gunner Boggs", "slug": "Gunner" },
+    { "name": "Corliss McLagain", "slug": "Corliss" },
+    { "name": "Riccardo Jiroudek", "slug": "Riccardo" }
+  ]
+}
