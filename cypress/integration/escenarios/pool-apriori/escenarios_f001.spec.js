@@ -143,7 +143,7 @@ describe('Funcionalidad F001: Creación de Post', () => {
                 // tag input and writes a new tag using whitespaces, special characters, and
                 // 'naughty' characters, and publishes the post
                 post.clickEditorSettingsToggle();
-                post.setTagPage(articlePoolObj.tag.trim());
+                post.setTagPage(articlePoolObj.tag);
                 post.clickEditorSettingsToggle();
     
                 // THEN he should be able to write a title and the content
@@ -153,7 +153,7 @@ describe('Funcionalidad F001: Creación de Post', () => {
                 post.publishNow();
 
                 post.clickEditorSettingsToggle();
-                post.readTags((txt) => expect(txt.trim()).to.equal(articlePoolObj.tag.trim()));
+                post.readTags((txt) => expect(txt.trim()).to.equal(articlePoolObj.tag));
             });
         });
         it('F001E06.PA: ', () => {

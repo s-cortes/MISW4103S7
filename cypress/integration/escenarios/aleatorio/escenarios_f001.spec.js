@@ -151,6 +151,7 @@ describe('Funcionalidad F001: Creación de Post', () => {
             post.clickEditorSettingsToggle();
             post.setTagPage(tag);
             post.clickEditorSettingsToggle();
+            post.publishNow();
 
             // THEN the post editor should show a publication error alert
             // indicating that it was not possible to publish the post
