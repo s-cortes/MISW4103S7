@@ -81,7 +81,7 @@ describe('Funcionalidad F002: Creación de Pages', () => {
             page.writeArticle(paragraph);
 
             // WHEN the admin publishes the page, and opens the editor settings
-            // menu, and selects the  tag input and writes a new tag, and 
+            // menu, and selects the tag input and writes a new tag, and 
             // re-publishes the page
             page.publishNow();
 
@@ -100,7 +100,33 @@ describe('Funcionalidad F002: Creación de Pages', () => {
             page.readTags((txt) => expect(txt.trim()).to.equal(tag));
         });
         it('F002E05.EA: ', () => {
+            // GIVEN (additional to the login and dashboard navigation)
+            // that the admin navitages to the dashboard, and selects the option
+            // to create a page, and writes a title and the content for the page
+            page.navigateToEditor();
+            let title = faker.lorem.words();
+            let paragraph = faker.lorem.paragraphs();
+            page.writeTitle(title);
+            page.writeArticle(paragraph);
 
+            // WHEN the admin publishes the page, and opens the editor settings
+            // menu, and selects the excerpt textarea and writes a new excerpt,
+            // and re-publishes the page
+            page.publishNow();
+
+            let excerpt = faker.lorem.words(10);
+            page.clickEditorSettingsToggle();
+            page.writeExcerpt(excerpt);
+            page.clickEditorSettingsToggle();
+
+            page.unPublish();
+            page.publishNow();
+
+            // THEN he should be able to open the settings tab, and
+            // the value in the excerpt textarea should match the text that
+            // the admin previously wrote
+            page.clickEditorSettingsToggle();
+            page.readExcerpt((txt) => expect(txt.trim()).to.equal(excerpt));
         });
         it('F002E07.EA: ', () => {
 
@@ -151,13 +177,35 @@ describe('Funcionalidad F002: Creación de Pages', () => {
             page.clickEditorSettingsToggle();
             page.setTagPage(tag);
             page.clickEditorSettingsToggle();
+            page.publishNow();
 
             // THEN the page editor should show a publication error alert
             // indicating that it was not possible to publish the page
             page.checkIfPublishErrorExists();
         });
         it('F002E06.EA: ', () => {
+            // GIVEN (additional to the login and dashboard navigation)
+            // that the admin navitages to the dashboard, and selects the option
+            // to create a page, and writes a title and the content for the page
+            page.navigateToEditor();
+            let title = faker.lorem.words();
+            let paragraph = faker.lorem.paragraphs();
+            page.writeTitle(title);
+            page.writeArticle(paragraph);
 
+            // WHEN the admin publishes the page, and opens the editor settings
+            // menu, and selects the excerpt textarea and writes a new excerpt, 
+            // with more characters than the DB limit, and publishes the page
+
+            let excerpt = faker.lorem.words(300);
+            page.clickEditorSettingsToggle();
+            page.writeExcerpt(excerpt);
+            page.clickEditorSettingsToggle();
+            page.publishNow();
+
+            // THEN the page editor should show a publication error alert
+            // indicating that it was not possible to publish the page
+            page.checkIfPublishErrorExists();
         });
         it('F002E08.EA: ', () => {
 

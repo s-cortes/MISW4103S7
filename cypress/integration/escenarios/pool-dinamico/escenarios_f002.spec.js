@@ -66,12 +66,11 @@ describe('Funcionalidad F002: Creación de Pages', () => {
                 page.clickEditorSettingsToggle();
                 page.writeUrlSlug(url);
                 page.clickEditorSettingsToggle();
+                page.publishNow();
 
                 
-                // THEN he should be able to publish the page, and
-                // the value in the url slug input  should match the text that
+                // THEN the value in the url slug input  should match the text that
                 // the admin previously wrote
-                page.publishNow();
                 page.clickEditorSettingsToggle();
                 page.readUrlSlug(txt => expect(txt).to.equal(url));
             });
@@ -101,7 +100,39 @@ describe('Funcionalidad F002: Creación de Pages', () => {
             });
         });
         it('F002E05.PD: ', () => {
+            // GIVEN (additional to the login and dashboard navigation)
+            // that the admin navitages to the dashboard, and selects the option
+            // to create a page, and writes a title and the content for the page
+            articlesPositivePool.forEach(articlePoolObj => {
+                page.navigateToEditor();
+                page.writeTitle(articlePoolObj.title);
+                page.writeArticle(articlePoolObj.content);
+    
+                // WHEN the admin opens the editor settings menu, and selects the
+                // excerpt textarea and writes a new excerpt, and publishes the page
+                let excerpt = articlePoolObj.excerpt.trim();
+                page.clickEditorSettingsToggle();
+                page.writeExcerpt(excerpt);
+                page.clickEditorSettingsToggle();
+                page.publishNow();
+    
+                // THEN he should be able to open the settings tab, and
+                // the value in the excerpt textarea should match the text that
+                // the admin previously wrote, and after editing the excerpt and
+                // re-publishing the poist, the new excerpt should change
+                page.clickEditorSettingsToggle();
+                page.readExcerpt((txt) => expect(txt.trim()).to.equal(excerpt));
+                page.clickEditorSettingsToggle();
 
+                page.unPublish();
+                page.clickEditorSettingsToggle();
+                page.writeExcerpt(articlePoolObj.title);
+                page.clickEditorSettingsToggle();
+                page.publishNow();
+
+                page.clickEditorSettingsToggle();
+                page.readExcerpt((txt) => expect(txt.trim()).to.equal(articlePoolObj.title));
+            });
         });
         it('F002E07.PD: ', () => {
 
@@ -124,7 +155,7 @@ describe('Funcionalidad F002: Creación de Pages', () => {
         });
 
         it('F002E02.PD: ', () => {
-             // GIVEN (additional to the login and dashboard navigation)
+            // GIVEN (additional to the login and dashboard navigation)
             // that the admin navitages to the dashboard, and selects the option
             // to create a page, and writes a title and the content for the page
             articlesNegativePool.forEach((articlePoolObj, index) => {
@@ -177,7 +208,31 @@ describe('Funcionalidad F002: Creación de Pages', () => {
             });
         });
         it('F002E06.PD: ', () => {
+            // GIVEN (additional to the login and dashboard navigation)
+            // that the admin navitages to the dashboard, and selects the option
+            // to create a page, and writes a title and the content for the page
+            articlesNegativePool.forEach((articlePoolObj, index) => {
+                let posArticleObj = articlesPositivePool[index];
 
+                page.navigateToEditor();
+                page.writeTitle(posArticleObj.title);
+                page.writeArticle(posArticleObj.content);
+
+                // WHEN the admin opens the editor settings menu, and selects the
+                // excerpt textarea and writes a new excerpt, with the number of
+                // characters varying near the DB colum's limit, and publishes the page
+                let excerpt = articlePoolObj.excerpt.trim();
+                page.clickEditorSettingsToggle();
+                page.writeExcerpt(excerpt);
+                page.clickEditorSettingsToggle();
+                page.publishNow();
+    
+                // THEN he should be able to open the settings tab, and
+                // the value in the excerpt textarea should match the text that
+                // the admin previously wrote
+                page.clickEditorSettingsToggle();
+                page.readExcerpt((txt) => expect(txt.trim()).to.equal(excerpt));
+            });
         });
         it('F002E08.PD: ', () => {
 
