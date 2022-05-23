@@ -129,7 +129,27 @@ describe('Funcionalidad F001: Creación de Post', () => {
 
         });
         it('F001E09.EA: ', () => {
+            // GIVEN (additional to the login and dashboard navigation)
+            // that the admin navitages to the dashboard, and selects the option
+            // to create a post, and writes a title and the content for the post
+            post.navigateToEditor();
+            let title = faker.lorem.words();
+            let paragraph = faker.lorem.paragraphs();
+            post.writeTitle(title);
+            post.writeArticle(paragraph);
 
+            //WHEN the admin publishes the post now
+            post.publishNow();
+
+            // THEN after navegating to the new post,
+            // the title and the content that appears in the article
+            // should match the text that the admin previously wrote
+            article.navigateToArticleByTitle(title);
+            cy.wait(300);
+            article.readTitle((txt) => expect(txt).to.equal(title));
+            article.readContent(prgph => {
+                expect(paragraph).to.contain(prgph);
+            });
         });
     });
 
@@ -209,7 +229,27 @@ describe('Funcionalidad F001: Creación de Post', () => {
 
         });
         it('F001E10.EA: ', () => {
+            // GIVEN (additional to the login and dashboard navigation)
+            // that the admin navitages to the dashboard, and selects the option
+            // to create a post, and writes a title and the content for the post
+            post.navigateToEditor();
+            let title = faker.lorem.words();
+            let paragraph = faker.lorem.paragraphs(50000);
+            post.writeTitle(title);
+            post.writeArticle(paragraph);
 
+            //WHEN the admin publishes the post now
+            post.publishNow();
+
+            // THEN after navegating to the new post,
+            // the title and the content that appears in the article
+            // should match the text that the admin previously wrote
+            article.navigateToArticleByTitle(title);
+            cy.wait(300);
+            article.readTitle((txt) => expect(txt).to.equal(title));
+            article.readContent(prgph => {
+                expect(paragraph).to.contain(prgph);
+            });
         });
     });
 

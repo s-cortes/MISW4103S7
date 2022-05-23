@@ -149,6 +149,10 @@ class Editor {
         cy.get('a.post-view-link').click();
         cy.wait(300);
     }
+    goToPagePublishFromSlug(){
+        cy.get('p.ghost-url-preview').invoke('text').then(val => cy.visit(val));
+        cy.wait(300)
+    }
     setTagPage(tagName){
         cy.get('#tag-input').clear().type(tagName).type('{enter}');
         cy.wait(300);
@@ -247,6 +251,11 @@ class Page extends Editor {
         let postItem = cy.contains('li', title).first();
         callback(postItem);
     }
+    goPageFromTitle(title){
+        cy.contains('h3.gh-content-entry-title', title).first().click();
+        cy.wait(300)
+    }
+    
 }
 
 export {Post, Page};

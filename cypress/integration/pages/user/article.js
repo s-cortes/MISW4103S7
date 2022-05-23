@@ -15,4 +15,10 @@ export class Article {
                 cy.wrap($p).invoke('text').then(txt => callback(txt));
             });
     }
+    navigateToArticleByTitle(title){
+        cy.visit(`${userUrls.homeUrl}`);
+        cy.wait(300);
+        cy.contains('h2.post-card-title', title).first().click();
+        cy.wait(300);
+    }
 }

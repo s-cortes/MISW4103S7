@@ -121,7 +121,27 @@ describe('Funcionalidad F001: Creación de Post', () => {
 
         });
         it('F001E09.PA: ', () => {
+            articlesPositivePool.forEach(articlePoolObj => {
+                // GIVEN (additional to the login and dashboard navigation)
+                // that the admin navitages to the dashboard, and selects the option
+                // to create a post, and writes a title and the content for the post
+                post.navigateToEditor();
+                post.writeTitle(articlePoolObj.title);
+                post.writeArticle(articlePoolObj.content);
 
+                //WHEN the admin publishes the post now
+                post.publishNow();
+
+                // THEN after navegating to the new post,
+                // the title and the content that appears in the article
+                // should match the text that the admin previously wrote
+                article.navigateToArticleByTitle(articlePoolObj.title);
+                cy.wait(300);
+                article.readTitle((txt) => expect(txt).to.equal(articlePoolObj.title));
+                article.readContent(prgph => {
+                    expect(articlePoolObj.content).to.contain(prgph);
+                });
+            })
         });
     });
 
@@ -187,6 +207,24 @@ describe('Funcionalidad F001: Creación de Post', () => {
 
         });
         it('F001E10.PA: ', () => {
+            articlesNegativePool.forEach((articlePoolObj, index) => {
+                post.navigateToEditor();
+                post.writeTitle(articlePoolObj.title);
+                post.writeArticle(articlePoolObj.content);
+
+                //WHEN the admin publishes the post now
+                post.publishNow();
+
+                // THEN after navegating to the new post,
+                // the title and the content that appears in the article
+                // should match the text that the admin previously wrote
+                article.navigateToArticleByTitle(articlePoolObj.title);
+                cy.wait(300);
+                article.readTitle((txt) => expect(txt).to.equal(articlePoolObj.title));
+                article.readContent(prgph => {
+                    expect(articlePoolObj.content).to.contain(prgph);
+                });
+            })
 
         });
     });
