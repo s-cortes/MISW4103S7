@@ -204,7 +204,7 @@ describe('Funcionalidad F002: Creación de Pages', () => {
                 // tag input and writes a new tag using whitespaces, special characters, and
                 // 'naughty' characters, and publishes the page
                 page.clickEditorSettingsToggle();
-                page.setTagPage(articlePoolObj.tag.trim());
+                page.setTagPage(articlePoolObj.tag);
                 page.clickEditorSettingsToggle();
     
                 // THEN he should be able to write a title and the content
@@ -215,7 +215,7 @@ describe('Funcionalidad F002: Creación de Pages', () => {
                 page.publishNow();
 
                 page.clickEditorSettingsToggle();
-                page.readTags((txt) => expect(txt.trim()).to.equal(articlePoolObj.tag.trim()));
+                page.readTags((txt) => expect(txt.trim()).to.equal(articlePoolObj.tag));
             });
         });
         it('F002E06.PA: ', () => {
