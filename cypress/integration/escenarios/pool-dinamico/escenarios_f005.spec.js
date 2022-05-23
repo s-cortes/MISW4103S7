@@ -16,6 +16,8 @@ const profile = new Profile();
 
 const profileNegativePool = new MockarooManager(5, SCHEMAS.profileNegative);
 const profilePositivePool = new MockarooManager(5, SCHEMAS.profilePositive);
+let profilesPositivePool = [];
+let profilesNegativePool = [];
 /**
  * Agrupación de Escenarios por Funcionalidad
  * F005: Edición Admin Profile
@@ -35,7 +37,7 @@ describe('Funcionalidad F005: Edición Admin Profile', () => {
     describe('Escenarios Positivos', () => {
 
         before(async () => {
-            profilePositivePool = await profilePositivePool.generareDataPool();
+            profilesPositivePool = await profilePositivePool.generareDataPool();
         })
 
         after(() => {
@@ -45,7 +47,7 @@ describe('Funcionalidad F005: Edición Admin Profile', () => {
 
         it('F005E01.PD: ', () => {
 
-            profilePositivePool.forEach((profilePoolObj) => {
+            profilesPositivePool.forEach((profilePoolObj) => {
                 dashboard.navigate();
                 profile.openProfile();
         
@@ -64,7 +66,7 @@ describe('Funcionalidad F005: Edición Admin Profile', () => {
         });
         it('F005E03.PD: ', () => {
 
-            profilePositivePool.forEach((profilePoolObj) => {
+            profilesPositivePool.forEach((profilePoolObj) => {
                 dashboard.navigate();
                 profile.openProfile();
         
@@ -86,8 +88,8 @@ describe('Funcionalidad F005: Edición Admin Profile', () => {
     describe('Escenarios Negativos', () => {
 
         before(async () => {
-            profilePositivePool = await profilePositivePool.generareDataPool();
-            profileNegativePool = await profileNegativePool.generareDataPool();
+            profilesPositivePool = await profilePositivePool.generareDataPool();
+            profilesNegativePool = await profileNegativePool.generareDataPool();
         })
 
         after(() => {
@@ -97,7 +99,7 @@ describe('Funcionalidad F005: Edición Admin Profile', () => {
 
         it('F005E02.PD: ', () => {
 
-            profileNegativePool.forEach((profilePoolObj) => {
+            profilesNegativePool.forEach((profilePoolObj) => {
                 // GIVEN (additional to the login and dashboard navigation)
                 // that the admin navitages to the dashboard, and goes to
                 // your profile
@@ -119,7 +121,7 @@ describe('Funcionalidad F005: Edición Admin Profile', () => {
         });
         it('F005E04.PD: ', () => {
 
-            profileNegativePool.forEach((profilePoolObj) => {
+            profilesNegativePool.forEach((profilePoolObj) => {
                 // GIVEN (additional to the login and dashboard navigation)
                 // that the admin navitages to the dashboard, and goes to
                 // your profile
