@@ -18,7 +18,7 @@ export class AdminDashboard {
         cy.wait(300);
     }
     getTags() {
-        cy.get('a.ember-view[href="#/tags/"]').click();
+        cy.get('a.ember-view[href="#/tags/"]').first().click();
         cy.wait(300);
     }
     getMembers() {

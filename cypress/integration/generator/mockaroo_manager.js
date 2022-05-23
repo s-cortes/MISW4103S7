@@ -24,7 +24,9 @@ class MockarooManager {
 
 const SCHEMAS = {
     articlesPositive: {key: '0c346df0', name: 'editor_positive'},
-    articlesNegative: {key: '0c346df0', name: 'editor_negative'}
+    articlesNegative: {key: '0c346df0', name: 'editor_negative'},
+    tagsPositive: {key: '25b22630', name: 'Tags-Positive'},
+    tagsNegative: {key: '25b22630', name: 'tags-Negative'}
 };
 
 export{MockarooManager, SCHEMAS};
