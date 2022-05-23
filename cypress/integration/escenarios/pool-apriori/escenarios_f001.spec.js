@@ -38,8 +38,8 @@ describe('Funcionalidad F001: Creación de Post', () => {
         dashboard.navigate();
     });
 
-    describe('Escenarios Positivos', () => {
-        it('F001E01.PA: ', () => {
+  describe('Escenarios Positivos', () => {
+       it('F001E01.PA: ', () => {
             // GIVEN (additional to the login and dashboard navigation)
             // that the admin navitages to the dashboard, and selects the option
             // to create a post, and writes a title and the content for the post
@@ -65,7 +65,7 @@ describe('Funcionalidad F001: Creación de Post', () => {
                 article.readTitle((txt) => expect(txt).to.equal(articlePoolObj.title));
                 article.readContent(prgh => expect(articlePoolObj.content).to.contain(prgh));
             });
-        });
+        });  
         it('F001E03.PA: ', () => {
             // GIVEN (additional to the login and dashboard navigation)
             // that the admin navitages to the dashboard, and selects the option
@@ -91,6 +91,30 @@ describe('Funcionalidad F001: Creación de Post', () => {
             });
         });
         it('F001E05.PA: ', () => {
+            // GIVEN (additional to the login and dashboard navigation)
+            // that the admin navitages to the dashboard, and selects the option
+            // to create a post, and writes a title and the content for the post
+            articlesPositivePool.forEach(articlePoolObj => {
+            let excerpt = articlePoolObj.excerpt.replaceAll(' ', '-');
+
+            post.navigateToEditor();
+            post.writeTitle(articlePoolObj.title);
+            post.writeArticle(articlePoolObj.content);
+
+            // WHEN the admin opens the editor settings menu, and selects the
+            // excerpt and write the text
+            post.clickEditorSettingsToggle();
+            post.writeExcerpt(excerpt);
+            post.clickEditorSettingsToggle();
+            post.publishNow();
+            
+            // THEN after navegating to the post with the new excerpt,
+            // the title and the content that appears in the article
+            // should see the excerpt that the admin previously wrote
+            post.clickEditorSettingsToggle();
+            post.clickEditorSettingsView();
+            post.readArticle((txt) => expect(txt).to.equal(articlePoolObj.content));
+            });
 
         });
         it('F001E07.PA: ', () => {
@@ -143,7 +167,7 @@ describe('Funcionalidad F001: Creación de Post', () => {
                 // tag input and writes a new tag using whitespaces, special characters, and
                 // 'naughty' characters, and publishes the post
                 post.clickEditorSettingsToggle();
-                post.setTagPage(articlePoolObj.tag.trim());
+                post.setTagPage(articlePoolObj.tag);
                 post.clickEditorSettingsToggle();
     
                 // THEN he should be able to write a title and the content
@@ -153,11 +177,11 @@ describe('Funcionalidad F001: Creación de Post', () => {
                 post.publishNow();
 
                 post.clickEditorSettingsToggle();
-                post.readTags((txt) => expect(txt.trim()).to.equal(articlePoolObj.tag.trim()));
+                post.readTags((txt) => expect(txt.trim()).to.equal(articlePoolObj.tag));
             });
         });
         it('F001E06.PA: ', () => {
-
+               
         });
         it('F001E08.PA: ', () => {
 
