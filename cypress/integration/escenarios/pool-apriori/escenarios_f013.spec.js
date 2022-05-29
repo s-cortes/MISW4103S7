@@ -21,7 +21,7 @@ const profile = new Profile();
  * Agrupación de Escenarios por Funcionalidad
  * F005: Edición Admin Profile
  */
-describe("Funcionalidad F005: Edición Admin Profile", () => {
+describe("Funcionalidad F013: Edición Admin Profile", () => {
   before(() => {
     faker.seed(10005);
     login.login(adminEmail, adminPassword);
@@ -38,7 +38,7 @@ describe("Funcionalidad F005: Edición Admin Profile", () => {
   });
 
   describe("Escenarios Positivos", () => {
-    it("F005E01.PA: ", () => {
+    it("F013E02: ", () => {
       profilePositivePool.forEach((profilePoolObj) => {
         dashboard.navigate();
         profile.openProfile();
@@ -55,7 +55,7 @@ describe("Funcionalidad F005: Edición Admin Profile", () => {
         profile.readName((txt) => expect(txt).to.equal(profilePoolObj.name));
       });
     });
-    it("F005E03.PA: ", () => {
+    it("F013E08: ", () => {
       profilePositivePool.forEach((profilePoolObj) => {
         dashboard.navigate();
         profile.openProfile();
@@ -75,7 +75,7 @@ describe("Funcionalidad F005: Edición Admin Profile", () => {
   });
 
   describe("Escenarios Negativos", () => {
-    it("F005E02.PA: ", () => {
+    it("F013E05: ", () => {
       profileNegativePool.forEach((profilePoolObj) => {
         // GIVEN (additional to the login and dashboard navigation)
         // that the admin navitages to the dashboard, and goes to
@@ -95,7 +95,7 @@ describe("Funcionalidad F005: Edición Admin Profile", () => {
         profile.readName((txt) => expect(txt).to.equal(profilePoolObj.name));
       });
     });
-    it("F005E04.PA: ", () => {
+    it("F013E11: ", () => {
       profileNegativePool.forEach((profilePoolObj) => {
         // GIVEN (additional to the login and dashboard navigation)
         // that the admin navitages to the dashboard, and goes to

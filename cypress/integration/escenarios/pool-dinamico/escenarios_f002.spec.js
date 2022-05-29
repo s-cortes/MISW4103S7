@@ -134,7 +134,7 @@ describe('Funcionalidad F002: Creación de Pages', () => {
                 page.readExcerpt((txt) => expect(txt.trim()).to.equal(articlePoolObj.title));
             });
         });
-        it('F002E07.PD: ', () => {
+        it('F002E09: ', () => {
 
             articlesPositivePool.forEach(articlePoolObj => {
                 // GIVEN (additional to the login and dashboard navigation)
@@ -274,7 +274,7 @@ describe('Funcionalidad F002: Creación de Pages', () => {
                 page.readExcerpt((txt) => expect(txt.trim()).to.equal(excerpt));
             });
         });
-        it('F002E08.PD: ', () => {
+        it('F002E12: ', () => {
 
             articlesNegativePool.forEach((articlePoolObj, index) => {
 

@@ -24,19 +24,19 @@
  ┃   ┃   ┃   ┣---📜 escenarios_f002.spec.js
  ┃   ┃   ┃   ┣---📜 escenarios_f003.spec.js
  ┃   ┃   ┃   ┣---📜 escenarios_f004.spec.js
- ┃   ┃   ┃   ┗---📜 escenarios_f005.spec.js
+ ┃   ┃   ┃   ┗---📜 escenarios_f013.spec.js
  ┃   ┃   ┣---📂 pool-apriori
  ┃   ┃   ┃   ┣---📜 escenarios_f001.spec.js
  ┃   ┃   ┃   ┣---📜 escenarios_f002.spec.js
  ┃   ┃   ┃   ┣---📜 escenarios_f003.spec.js
  ┃   ┃   ┃   ┣---📜 escenarios_f004.spec.js
- ┃   ┃   ┃   ┗---📜 escenarios_f005.spec.js
+ ┃   ┃   ┃   ┗---📜 escenarios_f013.spec.js
  ┃   ┃   ┗---📂 pool-dinamico
  ┃   ┃   ┃   ┣---📜 escenarios_f001.spec.js
  ┃   ┃   ┃   ┣---📜 escenarios_f002.spec.js
  ┃   ┃   ┃   ┣---📜 escenarios_f003.spec.js
  ┃   ┃   ┃   ┣---📜 escenarios_f004.spec.js
- ┃   ┃   ┃   ┗---📜 escenarios_f005.spec.js
+ ┃   ┃   ┃   ┗---📜 escenarios_f013.spec.js
  ┃   ┣---📂 generator
  ┃   ┃   ┃   ┗---📜 mockaroo_manager.js
  ┃   ┗---📂 pages

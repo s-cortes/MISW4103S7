@@ -105,7 +105,7 @@ describe('Funcionalidad F001: Creación de Post', () => {
         it('F001E07.PD: ', () => {
 
         });
-        it('F001E09.PD: ', () => {
+        it('F001E09: ', () => {
 
             articlesPositivePool.forEach(articlePoolObj => {
                 // GIVEN (additional to the login and dashboard navigation)
@@ -203,7 +203,7 @@ describe('Funcionalidad F001: Creación de Post', () => {
         it('F001E08.PD: ', () => {
 
         });
-        it('F001E10.PD: ', () => {
+        it('F001E12: ', () => {
 
             articlesNegativePool.forEach((articlePoolObj, index) => {
                 post.navigateToEditor();

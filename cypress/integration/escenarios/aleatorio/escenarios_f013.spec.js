@@ -19,7 +19,7 @@ const profile = new Profile();
  * Agrupación de Escenarios por Funcionalidad
  * F005: Edición Admin Profile
  */
-describe("Funcionalidad F005: Edición Admin Profile", () => {
+describe("Funcionalidad F013: Edición Admin Profile", () => {
   before(() => {
     faker.seed(10005);
     login.login(adminEmail, adminPassword);
@@ -36,7 +36,7 @@ describe("Funcionalidad F005: Edición Admin Profile", () => {
   });
 
   describe("Escenarios Positivos", () => {
-    it("F005E01.EA: ", () => {
+    it("F013E01: ", () => {
       // GIVEN (additional to the login and dashboard navigation)
       // that the admin navitages to the dashboard, and goes to
       // your profile
@@ -55,7 +55,7 @@ describe("Funcionalidad F005: Edición Admin Profile", () => {
       profile.openProfile();
       profile.readName((txt) => expect(txt).to.equal(name));
     });
-    it("F005E03.EA: ", () => {
+    it("F013E07: ", () => {
       // GIVEN (additional to the login and dashboard navigation)
       // that the admin navitages to the dashboard, and goes to
       // your profile
@@ -77,7 +77,7 @@ describe("Funcionalidad F005: Edición Admin Profile", () => {
   });
 
   describe("Escenarios Negativos", () => {
-    it("F005E02.EA: ", () => {
+    it("F013E04: ", () => {
       // GIVEN (additional to the login and dashboard navigation)
       // that the admin navitages to the dashboard, and goes to
       // your profile
@@ -96,7 +96,7 @@ describe("Funcionalidad F005: Edición Admin Profile", () => {
       profile.openProfile();
       profile.readName((txt) => expect(txt).to.equal(adminName));
     });
-    it("F005E04.EA: ", () => {
+    it("F013E10: ", () => {
       // GIVEN (additional to the login and dashboard navigation)
       // that the admin navitages to the dashboard, and goes to
       // your profile

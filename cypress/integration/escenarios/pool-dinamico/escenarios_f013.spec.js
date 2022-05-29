@@ -22,7 +22,7 @@ let profilesNegativePool = [];
  * Agrupación de Escenarios por Funcionalidad
  * F005: Edición Admin Profile
  */
-describe('Funcionalidad F005: Edición Admin Profile', () => {
+describe('Funcionalidad F013: Edición Admin Profile', () => {
 
     before(() => {
         faker.seed(10005);
@@ -45,7 +45,7 @@ describe('Funcionalidad F005: Edición Admin Profile', () => {
             settingsPage.deleteAllContent();
         });
 
-        it('F005E01.PD: ', () => {
+        it('F013E03: ', () => {
 
             profilesPositivePool.forEach((profilePoolObj) => {
                 dashboard.navigate();
@@ -64,7 +64,7 @@ describe('Funcionalidad F005: Edición Admin Profile', () => {
               });
 
         });
-        it('F005E03.PD: ', () => {
+        it('F013E09: ', () => {
 
             profilesPositivePool.forEach((profilePoolObj) => {
                 dashboard.navigate();
@@ -97,7 +97,7 @@ describe('Funcionalidad F005: Edición Admin Profile', () => {
             settingsPage.deleteAllContent();
         });
 
-        it('F005E02.PD: ', () => {
+        it('F013E06: ', () => {
 
             profilesNegativePool.forEach((profilePoolObj) => {
                 // GIVEN (additional to the login and dashboard navigation)
@@ -119,7 +119,7 @@ describe('Funcionalidad F005: Edición Admin Profile', () => {
               });
 
         });
-        it('F005E04.PD: ', () => {
+        it('F013E12: ', () => {
 
             profilesNegativePool.forEach((profilePoolObj) => {
                 // GIVEN (additional to the login and dashboard navigation)
