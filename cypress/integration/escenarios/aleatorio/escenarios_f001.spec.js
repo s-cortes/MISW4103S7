@@ -128,7 +128,7 @@ describe('Funcionalidad F001: Creación de Post', () => {
         it('F001E07.EA: ', () => {
 
         });
-        it('F001E09.EA: ', () => {
+        it('F001E07: ', () => {
             // GIVEN (additional to the login and dashboard navigation)
             // that the admin navitages to the dashboard, and selects the option
             // to create a post, and writes a title and the content for the post
@@ -228,7 +228,7 @@ describe('Funcionalidad F001: Creación de Post', () => {
         it('F001E08.EA: ', () => {
 
         });
-        it('F001E10.EA: ', () => {
+        it('F001E10: ', () => {
             // GIVEN (additional to the login and dashboard navigation)
             // that the admin navitages to the dashboard, and selects the option
             // to create a post, and writes a title and the content for the post

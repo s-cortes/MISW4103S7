@@ -128,7 +128,7 @@ describe('Funcionalidad F002: Creación de Pages', () => {
             page.clickEditorSettingsToggle();
             page.readExcerpt((txt) => expect(txt.trim()).to.equal(excerpt));
         });
-        it('F002E07.EA: ', () => {
+        it('F002E07: ', () => {
             // GIVEN (additional to the login and dashboard navigation)
             // that the admin navitages to the dashboard, and selects the option
             // to create a page
@@ -244,7 +244,7 @@ describe('Funcionalidad F002: Creación de Pages', () => {
             // indicating that it was not possible to publish the page
             page.checkIfPublishErrorExists();
         });
-        it('F002E08.EA: ', () => {
+        it('F002E10: ', () => {
             // GIVEN (additional to the login and dashboard navigation)
             // that the admin navitages to the dashboard, and selects the option
             // to create a page

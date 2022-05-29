@@ -120,7 +120,7 @@ describe('Funcionalidad F001: Creación de Post', () => {
         it('F001E07.PA: ', () => {
 
         });
-        it('F001E09.PA: ', () => {
+        it('F001E07: ', () => {
             articlesPositivePool.forEach(articlePoolObj => {
                 // GIVEN (additional to the login and dashboard navigation)
                 // that the admin navitages to the dashboard, and selects the option
@@ -206,7 +206,7 @@ describe('Funcionalidad F001: Creación de Post', () => {
         it('F001E08.PA: ', () => {
 
         });
-        it('F001E10.PA: ', () => {
+        it('F001E11: ', () => {
             articlesNegativePool.forEach((articlePoolObj, index) => {
                 post.navigateToEditor();
                 post.writeTitle(articlePoolObj.title);
